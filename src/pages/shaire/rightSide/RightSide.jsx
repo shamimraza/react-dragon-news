@@ -4,17 +4,36 @@ import { FaTwitter, FaInstagram } from "react-icons/fa";
 import Swimming from "../../../assets/qZone1.png";
 import Class from "../../../assets/qZone2.png";
 import Play from "../../../assets/qZone3.png";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const RightSide = () => {
+  const { googleLogin, user, githubLogin } = useContext(AuthContext);
+
+  const handleWithGoogle = (google) => {
+    google()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div>
       <div className="p-4 mb-6">
         <h2 className=" text-3xl">Login with</h2>
-        <button className="btn btn-outline mt-5 w-full">
+        <button
+          onClick={() => handleWithGoogle(googleLogin)}
+          className="btn btn-outline mt-5 w-full"
+        >
           <AiOutlineGoogle className="text-xl"></AiOutlineGoogle>Login With
           Google
         </button>
-        <button className="btn btn-outline mt-2 w-full">
+        <button
+          onClick={() => handleWithGoogle(githubLogin)}
+          className="btn btn-outline mt-2 w-full"
+        >
           <AiOutlineGithub className="text-xl"></AiOutlineGithub>Login With
           Github
         </button>

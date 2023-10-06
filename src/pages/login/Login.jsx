@@ -8,15 +8,15 @@ const Login = () => {
 
   const location = useLocation;
   const navigate = useNavigate();
-  console.log("location in the login page", location);
+  // console.log("location in the login page", location);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(e.currentTarget);
+    // console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
-    console.log(email, password);
+    // console.log(email, password);
 
     // login user
 
